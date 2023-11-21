@@ -1,4 +1,4 @@
-package ir.bootcamp.java.banksystem.sftp.controller;
+package ir.bootcamp.java.banksystem.sftp.controllers;
 
 import ir.bootcamp.java.banksystem.models.documents.dto.CardInfoDto;
 import ir.bootcamp.java.banksystem.models.documents.models.CardInfoEntity;

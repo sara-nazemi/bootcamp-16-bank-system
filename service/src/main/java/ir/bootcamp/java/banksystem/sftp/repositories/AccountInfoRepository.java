@@ -1,4 +1,4 @@
-package ir.bootcamp.java.banksystem.sftp.repository;
+package ir.bootcamp.java.banksystem.sftp.repositories;
 
 import ir.bootcamp.java.banksystem.models.documents.models.AccountInfoEntity;
 

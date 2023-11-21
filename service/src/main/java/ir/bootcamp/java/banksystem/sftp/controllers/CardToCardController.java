@@ -1,9 +1,9 @@
-package ir.bootcamp.java.banksystem.sftp.controller;
+package ir.bootcamp.java.banksystem.sftp.controllers;
 
 import ir.bootcamp.java.banksystem.models.documents.dto.CardToCardDto;
 import ir.bootcamp.java.banksystem.models.documents.dto.CardToCardTransactionDto;
 import ir.bootcamp.java.banksystem.models.documents.models.CardToCardEntity;
-import ir.bootcamp.java.banksystem.sftp.controller.response.BankResponse;
+import ir.bootcamp.java.banksystem.sftp.controllers.response.BankResponse;
 import ir.bootcamp.java.banksystem.sftp.services.CardToCardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

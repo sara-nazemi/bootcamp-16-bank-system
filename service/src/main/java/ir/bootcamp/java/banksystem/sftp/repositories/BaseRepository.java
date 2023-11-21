@@ -1,4 +1,4 @@
-package ir.bootcamp.java.banksystem.sftp.repository;
+package ir.bootcamp.java.banksystem.sftp.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;

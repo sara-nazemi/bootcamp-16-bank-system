@@ -1,4 +1,4 @@
-package ir.bootcamp.java.banksystem.sftp.controller.response;
+package ir.bootcamp.java.banksystem.sftp.controllers.response;
 
 import lombok.*;
 
@@ -16,6 +16,5 @@ public class BankResponse<T> {
     private String code;
     private Date date;
     private Boolean hasError;
-
     private T data;
 }

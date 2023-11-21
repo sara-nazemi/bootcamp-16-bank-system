@@ -12,7 +12,6 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 public class PersonDto extends BaseDto {
-    //    @NotNull(groups = NotNullGroup.class, message = "person.id.isNull")
     private Long id;
     @NotNull(groups = NotNullGroup.class, message = "person.userId.isNull")
     private Long userId;

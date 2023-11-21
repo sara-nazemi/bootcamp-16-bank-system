@@ -2,7 +2,10 @@ package ir.bootcamp.java.banksystem.sftp.util;
 
 import org.springframework.stereotype.Component;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+import java.util.ResourceBundle;
 
 @Component
 public class ResourceBundleUtil {
@@ -24,10 +27,8 @@ public class ResourceBundleUtil {
         ResourceBundle bundle = ResourceBundle.getBundle("exception", locale);
 
         String message = "";
-        try {
-            message = bundle.getString(code);
-        } catch (NullPointerException | MissingResourceException ex) {
-        }
+        message = bundle.getString(code);
+
         return message;
     }
 

@@ -13,10 +13,6 @@ public class UserServiceImpl extends BaseServiceImpl<UserEntity, Long> implement
     @CacheEvict(cacheNames = "UserServiceImpl_findAll")
     @Override
     public UserEntity save(UserEntity entity) {
-//        if (entity.getPersonEntity() != null && entity.getPersonEntity().getId() == null) {
-//            // delete relation (FK)
-//            entity.setPersonEntity(null);
-//        }
         return super.save(entity);
     }
 

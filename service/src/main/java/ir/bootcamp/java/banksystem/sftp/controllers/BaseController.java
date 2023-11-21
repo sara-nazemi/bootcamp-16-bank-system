@@ -1,6 +1,6 @@
-package ir.bootcamp.java.banksystem.sftp.controller;
+package ir.bootcamp.java.banksystem.sftp.controllers;
 
-import ir.bootcamp.java.banksystem.sftp.controller.response.BankResponse;
+import ir.bootcamp.java.banksystem.sftp.controllers.response.BankResponse;
 import ir.bootcamp.java.banksystem.sftp.converter.BaseConverter;
 import ir.bootcamp.java.banksystem.models.documents.valid.GeneralValidationGroup;
 import ir.bootcamp.java.banksystem.models.documents.valid.NotNullGroup;

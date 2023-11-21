@@ -1,7 +1,7 @@
-package ir.bootcamp.java.banksystem.sftp.controller.exception;
+package ir.bootcamp.java.banksystem.sftp.controllers.exception;
 
 import ir.bootcamp.java.banksystem.models.documents.documents.ExceptionDocument;
-import ir.bootcamp.java.banksystem.sftp.controller.response.BankResponse;
+import ir.bootcamp.java.banksystem.sftp.controllers.response.BankResponse;
 import ir.bootcamp.java.banksystem.sftp.exception.BankException;
 import ir.bootcamp.java.banksystem.sftp.services.ExceptionDocumentService;
 import ir.bootcamp.java.banksystem.sftp.util.ResourceBundleUtil;

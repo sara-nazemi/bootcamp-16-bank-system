@@ -36,6 +36,17 @@ public class CardToCardServiceImpl extends BaseServiceImpl<CardToCardEntity, Lon
         Integer rnd = new Random().nextInt(999999);
 
 
+        // save decrease
+        CardToCardEntity decrease = new CardToCardEntity();
+        decrease.setCardInfoSource(sourceCardInfo);
+        decrease.setCardInfoTarget(targetCardInfo);
+
+        decrease.setTracking(String.valueOf(rnd));
+        decrease.setAccountInfoEntity(sourceCardInfo.getAccountInfoEntity());
+        decrease.setAmount(dto.getAmount() * -1);
+
+        save(decrease);
+
         // save increase
         CardToCardEntity increase = new CardToCardEntity();
         increase.setCardInfoSource(sourceCardInfo);
@@ -47,17 +58,6 @@ public class CardToCardServiceImpl extends BaseServiceImpl<CardToCardEntity, Lon
         increase.setAmount(dto.getAmount());
 
         save(increase);
-
-        // save decrease
-        CardToCardEntity decrease = new CardToCardEntity();
-        decrease.setCardInfoSource(sourceCardInfo);
-        decrease.setCardInfoTarget(targetCardInfo);
-
-        decrease.setTracking(String.valueOf(rnd));
-        decrease.setAccountInfoEntity(sourceCardInfo.getAccountInfoEntity());
-        decrease.setAmount(dto.getAmount() * -1);
-
-        save(decrease);
 
         return true;
     }

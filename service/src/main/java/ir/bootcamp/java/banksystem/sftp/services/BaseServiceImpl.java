@@ -1,6 +1,6 @@
 package ir.bootcamp.java.banksystem.sftp.services;
 
-import ir.bootcamp.java.banksystem.sftp.repository.BaseRepository;
+import ir.bootcamp.java.banksystem.sftp.repositories.BaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
