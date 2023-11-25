@@ -1,9 +1,9 @@
 package ir.bootcamp.java.banksystem.sftp.controllers;
 
-import ir.bootcamp.java.banksystem.sftp.controllers.response.BankResponse;
-import ir.bootcamp.java.banksystem.sftp.converter.BaseConverter;
 import ir.bootcamp.java.banksystem.models.documents.valid.GeneralValidationGroup;
 import ir.bootcamp.java.banksystem.models.documents.valid.NotNullGroup;
+import ir.bootcamp.java.banksystem.sftp.controllers.response.BankResponse;
+import ir.bootcamp.java.banksystem.sftp.converter.BaseConverter;
 import ir.bootcamp.java.banksystem.sftp.services.BaseService;
 import ir.bootcamp.java.banksystem.sftp.util.ResourceBundleUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
-
 
 public abstract class BaseController<E, D, ID> {
 

@@ -4,7 +4,6 @@ import org.mapstruct.Mapping;
 
 import java.util.List;
 
-
 public interface BaseConverter<E, D> {
 
     @Mapping(source = "insertDate", target = "insertDate")
