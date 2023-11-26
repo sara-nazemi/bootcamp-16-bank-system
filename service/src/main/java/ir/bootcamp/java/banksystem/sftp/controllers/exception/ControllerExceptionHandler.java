@@ -27,7 +27,7 @@ public class ControllerExceptionHandler {
 
     @Autowired
     ExceptionDocumentService exceptionDocumentService;
-
+// todo use logger
 
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -42,7 +42,7 @@ public class ControllerExceptionHandler {
         exceptionDocumentService.saveException(exceptionDocument);
 
         return BankResponse.builder()
-                .message("input parameter " + propertyName + " required this type : " + requiredType)
+                .message("input parameter " + propertyName + " required this type : " + requiredType) // todo translate the message
                 .code("xxxx")
                 .date(new Date())
                 .hasError(true)
@@ -65,6 +65,7 @@ public class ControllerExceptionHandler {
             code1 = "bank.method.argument.is.not.valid";
         }
 
+        // todo below code is duplicate
         String message1 = resourceBundleUtil.getMessage(code1, request.getHeader("lang"));
 
         ExceptionDocument exceptionDocument = new ExceptionDocument();
@@ -107,7 +108,8 @@ public class ControllerExceptionHandler {
     public @ResponseBody BankResponse<?> handleAnyException(Exception exception, HttpServletRequest request) {
         String lang = request.getHeader("lang");
         String message3 = resourceBundleUtil.getMessage("bank.internal.server.error", lang);
-        exception.printStackTrace();
+
+        exception.printStackTrace(); // todo avoid this, use logger instead
 
         ExceptionDocument exceptionDocument = new ExceptionDocument();
         exceptionDocument.setMessage(message3);

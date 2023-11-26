@@ -24,7 +24,7 @@ public abstract class BaseController<E, D, ID> {
     private BaseConverter<E, D> baseConverter;
 
     @Autowired
-    private ResourceBundleUtil resourceBundleUtil;
+    private ResourceBundleUtil resourceBundleUtil; // todo make this protected
 
     @PostMapping("/save")
     @Transactional
@@ -61,7 +61,7 @@ public abstract class BaseController<E, D, ID> {
 
     @GetMapping("/findAll")
     @Transactional(readOnly = true)
-    public BankResponse findAll(@RequestHeader("lang") String lang) {
+    public /* todo use explicit generic type in bank response*/ BankResponse findAll(@RequestHeader("lang") String lang) {
         List<E> all = baseService.findAll();
         List<D> find = baseConverter.converterDtoes(all);
         return BankResponse.builder()
