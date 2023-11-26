@@ -38,12 +38,13 @@ public class ControllerExceptionHandler {
 
         ExceptionDocument exceptionDocument = new ExceptionDocument();
         exceptionDocument.setMessage("input parameter " + propertyName + " required this type : " + requiredType);
-        exceptionDocument.setCode("xxxx");
+        exceptionDocument.setCode("internal.server.error");
         exceptionDocumentService.saveException(exceptionDocument);
 
+        String lang=request.getHeader("lang");
         return BankResponse.builder()
-                .message("input parameter " + propertyName + " required this type : " + requiredType) // todo translate the message
-                .code("xxxx")
+                .message(resourceBundleUtil.getMessage("internal.server.error",lang))
+                .code("internal.server.error")
                 .date(new Date())
                 .hasError(true)
                 .data(null)
