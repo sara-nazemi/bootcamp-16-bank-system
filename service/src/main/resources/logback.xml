@@ -13,6 +13,8 @@
     <property name="LOG_DIR" value="D:\bank_log"/>
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
         <file>${LOG_DIR}\bank-app.log</file>
+
+
         <append>true</append>
         <encoder>
             <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
