@@ -6,6 +6,8 @@ import ir.bootcamp.java.banksystem.sftp.exception.BankException;
 import ir.bootcamp.java.banksystem.sftp.services.ExceptionDocumentService;
 import ir.bootcamp.java.banksystem.sftp.util.ResourceBundleUtil;
 import jakarta.servlet.http.HttpServletRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
@@ -27,7 +29,8 @@ public class ControllerExceptionHandler {
 
     @Autowired
     ExceptionDocumentService exceptionDocumentService;
-// todo use logger
+    // todo use logger
+    private static final Logger LOGGER = LoggerFactory.getLogger(ControllerExceptionHandler.class);
 
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -41,9 +44,9 @@ public class ControllerExceptionHandler {
         exceptionDocument.setCode("internal.server.error");
         exceptionDocumentService.saveException(exceptionDocument);
 
-        String lang=request.getHeader("lang");
+        String lang = request.getHeader("lang");
         return BankResponse.builder()
-                .message(resourceBundleUtil.getMessage("internal.server.error",lang))
+                .message(resourceBundleUtil.getMessage("internal.server.error", lang))
                 .code("internal.server.error")
                 .date(new Date())
                 .hasError(true)
@@ -67,6 +70,10 @@ public class ControllerExceptionHandler {
         }
 
         // todo below code is duplicate
+        return getBankResponse(request, code1);
+    }
+
+    private BankResponse<?> getBankResponse(HttpServletRequest request, String code1) {
         String message1 = resourceBundleUtil.getMessage(code1, request.getHeader("lang"));
 
         ExceptionDocument exceptionDocument = new ExceptionDocument();
@@ -88,20 +95,7 @@ public class ControllerExceptionHandler {
     public @ResponseBody BankResponse<?> handleBankException(BankException b, HttpServletRequest request) {
         String code2 = b.getMessage();
 
-        String message2 = resourceBundleUtil.getMessage(code2, request.getHeader("lang"));
-
-        ExceptionDocument exceptionDocument = new ExceptionDocument();
-        exceptionDocument.setMessage(message2);
-        exceptionDocument.setCode(code2);
-        exceptionDocumentService.saveException(exceptionDocument);
-
-        return BankResponse.builder()
-                .message(message2)
-                .code(code2)
-                .date(new Date())
-                .hasError(true)
-                .data(null)
-                .build();
+        return getBankResponse(request, code2);
     }
 
     @ExceptionHandler(Exception.class)
@@ -110,7 +104,8 @@ public class ControllerExceptionHandler {
         String lang = request.getHeader("lang");
         String message3 = resourceBundleUtil.getMessage("bank.internal.server.error", lang);
 
-        exception.printStackTrace(); // todo avoid this, use logger instead
+        // todo avoid this, use logger instead
+        LOGGER.error("Error occurred in controller!", exception);
 
         ExceptionDocument exceptionDocument = new ExceptionDocument();
         exceptionDocument.setMessage(message3);
