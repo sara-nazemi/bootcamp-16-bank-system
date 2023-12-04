@@ -17,4 +17,5 @@ public abstract class BaseDto {
     //این رو که بذاریم دیگه سمت client نشونش نمیده
 //   @JsonFormat(shape = JsonFormat.Shape.STRING)
     private Integer version;
+    
 }

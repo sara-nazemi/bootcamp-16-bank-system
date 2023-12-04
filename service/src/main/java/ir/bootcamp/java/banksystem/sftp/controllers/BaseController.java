@@ -22,8 +22,10 @@ public abstract class BaseController<E, D, ID> {
     @Autowired
     private BaseConverter<E, D> baseConverter;
 
+    // because the classes that inherited from this also need this field (protected)
+
     @Autowired
-    private ResourceBundleUtil resourceBundleUtil; // todo make this protected
+    protected ResourceBundleUtil resourceBundleUtil; // todo make this protected
 
     @PostMapping("/save")
     @Transactional
@@ -60,7 +62,8 @@ public abstract class BaseController<E, D, ID> {
 
     @GetMapping("/findAll")
     @Transactional(readOnly = true)
-    public /* todo use explicit generic type in bank response*/ BankResponse findAll(@RequestHeader("lang") String lang) {
+    /* todo use explicit generic type in bank response*/
+    public BankResponse/*<List<D>>*/ findAll(@RequestHeader("lang") String lang) {
         List<E> all = baseService.findAll();
         List<D> find = baseConverter.converterDtoes(all);
         return BankResponse.builder()
