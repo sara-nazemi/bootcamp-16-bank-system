@@ -15,8 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/transaction/cardtocard")
 public class CardToCardController extends BaseController<CardToCardEntity, CardToCardDto, Long> {
 
-    @Autowired
-    CardToCardService cardToCardService;
+    private final CardToCardService cardToCardService;
+
+    public CardToCardController(CardToCardService cardToCardService) {
+        this.cardToCardService = cardToCardService;
+    }
 
 
     @PostMapping("/do")

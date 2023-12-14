@@ -1,5 +1,6 @@
 package ir.bootcamp.java.banksystem.models.documents.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import ir.bootcamp.java.banksystem.models.documents.valid.NotNullGroup;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -10,7 +11,6 @@ import lombok.*;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-
 @ToString
 public class UserDto extends BaseDto {
     @NotNull(groups = NotNullGroup.class, message = "user.id.isNull")
@@ -19,6 +19,7 @@ public class UserDto extends BaseDto {
     private String email;
     @NotNull(groups = NotNullGroup.class, message = "user.telephone.isNull")
     @Pattern(regexp = "^[\\d&[^\\s]]+$")
+    //@JsonProperty(value = "tell")
     private String telephone;
     @NotNull(groups = NotNullGroup.class, message = "user.personId.isNull")
     private Long personId;

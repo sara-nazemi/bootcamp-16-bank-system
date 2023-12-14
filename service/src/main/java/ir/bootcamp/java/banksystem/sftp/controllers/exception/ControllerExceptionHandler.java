@@ -24,13 +24,17 @@ import java.util.List;
 @ControllerAdvice
 public class ControllerExceptionHandler {
 
-    @Autowired
-    private ResourceBundleUtil resourceBundleUtil;
+    private final ResourceBundleUtil resourceBundleUtil;
 
-    @Autowired
-    ExceptionDocumentService exceptionDocumentService;
+    private final ExceptionDocumentService exceptionDocumentService;
     // todo use logger
     private static final Logger LOGGER = LoggerFactory.getLogger(ControllerExceptionHandler.class);
+
+    @Autowired
+    public ControllerExceptionHandler(ResourceBundleUtil resourceBundleUtil, ExceptionDocumentService exceptionDocumentService) {
+        this.resourceBundleUtil = resourceBundleUtil;
+        this.exceptionDocumentService = exceptionDocumentService;
+    }
 
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)

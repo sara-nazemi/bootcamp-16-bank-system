@@ -30,7 +30,7 @@ public abstract class BaseController<E, D, ID> {
 
     @PostMapping("/save")
     @Transactional
-    public BankResponse save(@RequestBody @Validated({NotNullGroup.class, GeneralValidationGroup.class}) D dto,
+    public BankResponse<?> save(@RequestBody @Validated({NotNullGroup.class, GeneralValidationGroup.class}) D dto,
                              @RequestHeader("lang") String lang) {
         E entity = baseConverter.convertEntity(dto);
         E save = baseService.save(entity);
@@ -47,7 +47,7 @@ public abstract class BaseController<E, D, ID> {
 
     @GetMapping("/findById/{id}")
     @Transactional(readOnly = true)
-    public BankResponse findById(@PathVariable @Validated(NotNullGroup.class) ID id,
+    public BankResponse<?> findById(@PathVariable @Validated(NotNullGroup.class) ID id,
                                  @RequestHeader("lang") String lang) {
 
         E byId = baseService.findById(id);
@@ -64,7 +64,7 @@ public abstract class BaseController<E, D, ID> {
     @GetMapping("/findAll")
     @Transactional(readOnly = true)
     /* todo use explicit generic type in bank response*/
-    public BankResponse/*<List<D>>*/ findAll(@RequestHeader("lang") String lang) {
+    public BankResponse<?> findAll(@RequestHeader("lang") String lang) {
         List<E> all = baseService.findAll();
         List<D> find = baseConverter.converterDtoes(all);
         return BankResponse.builder()
@@ -78,7 +78,7 @@ public abstract class BaseController<E, D, ID> {
 
     @DeleteMapping("/delete")
     @Transactional
-    public BankResponse deleteById(@RequestParam @Validated(NotNullGroup.class) ID id, @RequestHeader("lang") String lang) {
+    public BankResponse<?> deleteById(@RequestParam @Validated(NotNullGroup.class) ID id, @RequestHeader("lang") String lang) {
         baseService.deleteById(id);
         return BankResponse.builder()
                 .message(resourceBundleUtil.getMessage("user.delete.successfull", lang))
@@ -90,7 +90,7 @@ public abstract class BaseController<E, D, ID> {
     }
 
     @GetMapping()
-    public BankResponse findByExample(@RequestBody @Validated D dto, @RequestHeader("lang") String lang) {
+    public BankResponse<?> findByExample(@RequestBody @Validated D dto, @RequestHeader("lang") String lang) {
         E entity1 = baseConverter.convertEntity(dto);
         List<E> entities = baseService.findBySample(entity1);
         List<D> results = baseConverter.converterDtoes(entities);

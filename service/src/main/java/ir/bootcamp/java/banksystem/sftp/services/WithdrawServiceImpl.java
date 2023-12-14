@@ -12,8 +12,12 @@ import java.util.Random;
 @Service
 public class WithdrawServiceImpl extends BaseServiceImpl<WithdrawEntity, Long> implements WithdrawService {
 
+    private final AccountInfoService accountInfoService;
+
     @Autowired
-    private AccountInfoService accountInfoService;
+    public WithdrawServiceImpl(AccountInfoService accountInfoService) {
+        this.accountInfoService = accountInfoService;
+    }
 
     @Override
     public WithdrawEntity save(WithdrawEntity entity) {

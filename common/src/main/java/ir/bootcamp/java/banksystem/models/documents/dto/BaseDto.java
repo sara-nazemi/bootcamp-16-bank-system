@@ -16,6 +16,7 @@ public abstract class BaseDto {
     @PositiveOrZero
     //این رو که بذاریم دیگه سمت client نشونش نمیده
 //   @JsonFormat(shape = JsonFormat.Shape.STRING)
+
     private Integer version;
     
 }

@@ -12,8 +12,12 @@ import java.util.Random;
 @Service
 public class DepositServiceImpl extends BaseServiceImpl<DepositEntity, Long> implements DepositService {
 
+    private final AccountInfoService accountInfoService;
+
     @Autowired
-    private AccountInfoService accountInfoService;
+    public DepositServiceImpl(AccountInfoService accountInfoService) {
+        this.accountInfoService = accountInfoService;
+    }
 
     @Override
     public DepositEntity save(DepositEntity entity) {

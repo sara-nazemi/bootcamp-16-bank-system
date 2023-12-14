@@ -8,8 +8,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class ExceptionDocumentServiceImpl implements ExceptionDocumentService {
 
+    private final ExceptionDocumentRepository exceptionDocumentRepository;
+
     @Autowired
-    ExceptionDocumentRepository exceptionDocumentRepository;
+    public ExceptionDocumentServiceImpl(ExceptionDocumentRepository exceptionDocumentRepository) {
+        this.exceptionDocumentRepository = exceptionDocumentRepository;
+    }
 
     @Override
     public void saveException(ExceptionDocument exceptionDocument) {

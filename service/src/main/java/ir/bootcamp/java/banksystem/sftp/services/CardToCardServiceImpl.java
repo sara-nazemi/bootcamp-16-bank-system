@@ -14,14 +14,13 @@ import java.util.Random;
 @Service
 public class CardToCardServiceImpl extends BaseServiceImpl<CardToCardEntity, Long> implements CardToCardService {
 
+    private final CardInfoService cardInfoService;
+
     @Autowired
-    CardInfoService cardInfoService;
-    @Autowired
-    AccountInfoService accountInfoService;
-    @Autowired
-    WithdrawService withdrawService;
-    @Autowired
-    DepositService depositService;
+    public CardToCardServiceImpl(CardInfoService cardInfoService) {
+        this.cardInfoService = cardInfoService;
+
+    }
 
 
     @Override

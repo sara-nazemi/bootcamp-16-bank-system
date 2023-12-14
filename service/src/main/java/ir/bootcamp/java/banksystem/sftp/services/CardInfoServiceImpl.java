@@ -12,8 +12,12 @@ public class CardInfoServiceImpl extends BaseServiceImpl<CardInfoEntity, Long> i
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CardInfoServiceImpl.class);
 
+    private final CardInfoRepository cardInfoRepository;
+
     @Autowired
-    CardInfoRepository cardInfoRepository;
+    public CardInfoServiceImpl(CardInfoRepository cardInfoRepository) {
+        this.cardInfoRepository = cardInfoRepository;
+    }
 
     @Override
     public CardInfoEntity findByCardNumber(String cardNumber) {
