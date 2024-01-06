@@ -7,8 +7,10 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+
 @Component
 public class ResourceBundleUtil {
+
 
     Map<String, String> locales = new HashMap<>() {{
         put("fa", "IR");
@@ -22,8 +24,10 @@ public class ResourceBundleUtil {
             language = "fa";
         }
 
-        Locale locale = new Locale(language, country);
+        //  Locale locale = new Locale(language, country); Deprecated since 19
+        //this method is static , because we can not use constructor.
 
+        Locale locale = new Locale(language, country);
         ResourceBundle bundle = ResourceBundle.getBundle("exception", locale);
 
         String message = "";

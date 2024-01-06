@@ -1,5 +1,6 @@
 package ir.bootcamp.java.banksystem.models.documents.dto;
 
+import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.PositiveOrZero;
 import lombok.*;
 
@@ -8,6 +9,7 @@ import java.util.Date;
 @Setter
 @Getter
 @AllArgsConstructor
+@MappedSuperclass
 @NoArgsConstructor
 @ToString
 public abstract class BaseDto {

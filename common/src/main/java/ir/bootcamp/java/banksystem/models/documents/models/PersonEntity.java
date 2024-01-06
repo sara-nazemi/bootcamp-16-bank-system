@@ -29,7 +29,7 @@ public class PersonEntity extends BaseEntity {
     @Column(name = "p_address")
     private String address;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "p_user_entity", nullable = false)
     private UserEntity userEntity;
 

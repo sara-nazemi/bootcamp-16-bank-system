@@ -12,7 +12,6 @@ import java.util.List;
 @NoArgsConstructor
 @ToString(callSuper = true)
 @Entity
-
 @Table(name = "t_user")
 public class UserEntity extends BaseEntity {
 
@@ -26,6 +25,12 @@ public class UserEntity extends BaseEntity {
 
     @Column(name = "u_telephone")
     private String telephone;
+
+    @Column(name = "u_user_name", unique = true)
+    private String username;
+
+    @Column(name = "u_password")
+    private String password;
 
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "userEntity", cascade = CascadeType.MERGE)
     @PrimaryKeyJoinColumn

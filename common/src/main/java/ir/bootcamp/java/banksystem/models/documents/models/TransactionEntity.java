@@ -14,6 +14,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Entity
 @Table(name = "t_transaction")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class TransactionEntity extends BaseEntity {
 
     @Id

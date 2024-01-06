@@ -22,15 +22,7 @@ public class WithdrawServiceImpl extends BaseServiceImpl<WithdrawEntity, Long> i
     @Override
     public WithdrawEntity save(WithdrawEntity entity) {
 
-
-        if (entity.getId() != null) {
-            throw new BankException("transaction.cannot.edit");
-        }
-        entity.setDateTransaction(new Date());
-        Integer rnd = new Random().nextInt(999999);
-        entity.setTracking(String.valueOf(rnd));
-
-        AccountInfoEntity accountInfo = accountInfoService.findById(entity.getAccountInfoEntity().getId());
+        AccountInfoEntity accountInfo = accountInfoService.createAccountInfo(entity);
 
         Double inventory = accountInfo.getInventory();
         double result = inventory - entity.getAmount();
