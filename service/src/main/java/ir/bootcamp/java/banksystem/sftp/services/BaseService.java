@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface BaseService<E, ID> {
 
-    E save(E entity);
+    E save(E entity) throws InterruptedException;
 
     E findById(ID id);
 

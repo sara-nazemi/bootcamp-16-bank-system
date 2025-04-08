@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.Random;
 
 @Service
+
 public class AccountInfoServiceImpl extends BaseServiceImpl<AccountInfoEntity, Long> implements AccountInfoService {
 
 

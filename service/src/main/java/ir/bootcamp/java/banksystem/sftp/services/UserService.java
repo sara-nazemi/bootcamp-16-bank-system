@@ -4,4 +4,5 @@ import ir.bootcamp.java.banksystem.models.documents.models.UserEntity;
 
 public interface UserService extends BaseService<UserEntity, Long> {
     UserEntity loadByUsername(String username);
+
 }

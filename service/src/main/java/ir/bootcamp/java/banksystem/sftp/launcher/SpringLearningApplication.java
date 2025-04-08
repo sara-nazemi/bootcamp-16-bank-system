@@ -23,7 +23,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @ComponentScan(basePackages = "ir.bootcamp.java.banksystem")
 @EntityScan(basePackages = "ir.bootcamp.java.banksystem")
 @EnableAspectJAutoProxy
-@EnableAsync
 @EnableCaching
 public class SpringLearningApplication {
 

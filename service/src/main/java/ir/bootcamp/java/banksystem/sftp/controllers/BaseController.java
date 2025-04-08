@@ -32,7 +32,7 @@ public abstract class BaseController<E, D, ID> {
     @PostMapping("/save")
     @Transactional
     public BankResponse<?> save(@RequestBody @Validated({NotNullGroup.class, GeneralValidationGroup.class}) D dto,
-                             @RequestHeader("lang") String lang) {
+                             @RequestHeader("lang") String lang) throws InterruptedException {
         E entity = baseConverter.convertEntity(dto);
         E save = baseService.save(entity);
         D result = baseConverter.convertDto(save);

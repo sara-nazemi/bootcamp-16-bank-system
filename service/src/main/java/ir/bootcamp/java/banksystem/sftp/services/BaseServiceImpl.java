@@ -13,7 +13,7 @@ public class BaseServiceImpl<E, ID> implements BaseService<E, ID> {
     private BaseRepository<E, ID> baseRepository;
 
     @Override
-    public E save(E entity) {
+    public E save(E entity) throws InterruptedException {
         return baseRepository.save(entity);
     }
 
